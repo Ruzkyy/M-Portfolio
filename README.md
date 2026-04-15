@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 🧩 Frontend
 ⚛️ React → estructura de la app
 ⚡ Vite → servidor rápido y build
@@ -8,6 +9,8 @@
 🟠 JavaScript
 🔵 HTML (JSX en React)
 🟣 CSS (con Tailwind)
+=======
+>>>>>>> master
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

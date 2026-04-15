@@ -42,7 +42,7 @@ export default function Kirby({ section }) {
         return prev + 1.2
       })
 
-      setX((prev) => prev + Math.sin(Date.now() * 0.003) * 3)
+      setX((prev) => prev + Math.sin(Date.now() * 0.002) * 2.3)
     }, 16)
 
     return () => clearInterval(fall)
