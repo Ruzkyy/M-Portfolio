@@ -22,7 +22,7 @@ export default function About() {
 
         {/* 🧑 PERFIL */}
         <div className="flex justify-center items-start">
-          <div className="sticky top-1/2 -translate-y-1/2 self-start bg-white/5 border border-white/10 rounded-2xl p-20 backdrop-blur-md w-full max-w-xl">
+          <div className="fixed top-1/2 -translate-y-1/2 self-start bg-white/5 border border-white/10 rounded-2xl p-20 backdrop-blur-md w-full max-w-xl">
 
             <div className="flex flex-col items-center text-center">
               
