@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import idleGif from "../assets/kirbyAssets/kirby-tieso.gif"
 import walkGif from "../assets/kirbyAssets/kirby-walk.gif"
 import runGif from "../assets/kirbyAssets/kirby-run.gif"
@@ -23,12 +23,15 @@ export default function Kirby({ section }) {
   // 1. ESTADOS DEL COMPONENTE
   // =========================================================
 
-  // Posición absoluta en pantalla (x, y)
-  const [pos, setPos] = useState({ x: 0, y: 0 });
+  // Posición absoluta en pantalla (x, y). Inicializa muy arriba para la primera caída.
+  const [pos, setPos] = useState({ x: 0, y: -2000 });
   // Configuración visual: 'dir' (1 derecha, -1 izquierda), 'scale' (tamaño base)
   const [config, setConfig] = useState({ dir: 1, scale: 1 });
-  // Estado actual de la animación (idle, walk, run, sleep, drop, bye, change)
-  const [state, setState] = useState("idle");
+  // Estado actual de la animación. Empieza cayendo al cargar la página.
+  const [state, setState] = useState("drop");
+
+  // Referencia para saber si es la primera vez que carga la página
+  const isFirstRender = useRef(true);
 
   // Controladores de eventos interactivos
   const [isDragging, setIsDragging] = useState(false); // ¿El usuario lo está arrastrando?
@@ -51,6 +54,13 @@ export default function Kirby({ section }) {
    * animación de aviso ('change'), se teletransporta al techo y comienza a caer.
    */
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      // En la primera carga de la página, cae inmediatamente sin hacer la animación de aviso
+      setPos(p => ({ ...p, y: -window.innerHeight }));
+      return;
+    }
+
     setState("change");
     const timer = setTimeout(() => {
       setPos(p => ({ ...p, y: -window.innerHeight }));
