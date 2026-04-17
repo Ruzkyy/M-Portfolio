@@ -17,15 +17,15 @@ import { BsCalendar } from "react-icons/bs"
 export default function About() {
   return (
     <section className="px-20 pt-16 pb-20 flex justify-center">
-      
+
       <div className="grid lg:grid-cols-2 gap-20 max-w-[1400px] w-full">
 
         {/* 🧑 PERFIL */}
         <div className="flex justify-center items-start">
-          <div className="fixed top-1/2 -translate-y-1/2 self-start bg-white/5 border border-white/10 rounded-2xl p-20 backdrop-blur-md w-full max-w-xl">
+          <div className="relative lg:fixed lg:top-1/2 lg:-translate-y-1/2 self-start bg-white/5 border border-white/10 rounded-2xl p-8 lg:p-20 backdrop-blur-md w-full max-w-xl">
 
             <div className="flex flex-col items-center text-center">
-              
+
               <img
                 src={foto}
                 alt="Julián Ruiz"
@@ -50,7 +50,7 @@ export default function About() {
                 {/* EDAD */}
                 <span className="relative group flex items-center gap-1 bg-white/10 px-3 py-1 rounded-full transition-all duration-300hover:bg-white/20 hover:scale-105 hover:shadow-[0_0_12px_rgba(255,255,255,0.25)]">
                   <BsCalendar size={12} /> 20 años
-                    <span className="
+                  <span className="
                       absolute bottom-full mb-2
                       left-1/2 -translate-x-1/2
                       opacity-0 translate-y-2
@@ -62,9 +62,9 @@ export default function About() {
                       whitespace-nowrap
                       pointer-events-none
                     ">
-                      actualizado el 27/05/2026
-                    </span>
-              
+                    actualizado el 27/05/2026
+                  </span>
+
                 </span>
 
                 <span className="flex items-center gap-1 bg-white/10 px-3 py-1 rounded-full hover:bg-white/20 hover:scale-105 transition-all duration-300">
@@ -235,139 +235,139 @@ export default function About() {
 
             </div>
           </div>
-            {/* TECNOLOGÍAS */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
-              <h3 className="text-xl font-semibold mb-6">Tecnologías</h3>
+          {/* TECNOLOGÍAS */}
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+            <h3 className="text-xl font-semibold mb-6">Tecnologías</h3>
 
-              <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6">
 
-                {/* Lenguajes */}
-                <div>
-                  <h4 className="text-sm text-gray-400 mb-2">Lenguajes</h4>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+              {/* Lenguajes */}
+              <div>
+                <h4 className="text-sm text-gray-400 mb-2">Lenguajes</h4>
+                <div className="flex flex-wrap gap-2">
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
                     hover:bg-white/20 hover:scale-105 transition-all duration-300 
                     hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      HTML
-                    </span>
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    HTML
+                  </span>
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
                     hover:bg-white/20 hover:scale-105 transition-all duration-300 
                     hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      CSS
-                    </span>
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    CSS
+                  </span>
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
                     hover:bg-white/20 hover:scale-105 transition-all duration-300 
                     hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      JavaScript
-                    </span>
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    JavaScript
+                  </span>
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
                     hover:bg-white/20 hover:scale-105 transition-all duration-300 
                     hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      Java
-                    </span>
-                  </div>
+                    Java
+                  </span>
                 </div>
-
-                {/* Frontend */}
-                <div>
-                  <h4 className="text-sm text-gray-400 mb-2">Frontend</h4>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      React
-                    </span>
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      Angular
-                    </span>
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      Tailwind CSS
-                    </span>
-                  </div>
-                </div>
-
-                {/* Backend */}
-                <div>
-                  <h4 className="text-sm text-gray-400 mb-2">Backend</h4>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      Node.js
-                    </span>
-                  </div>
-                </div>
-
-                {/* Bases de datos */}
-                <div>
-                  <h4 className="text-sm text-gray-400 mb-2">Bases de datos</h4>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      PostgreSQL
-                    </span>
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      MySQL
-                    </span>
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      MongoDB
-                    </span>
-                  </div>
-                </div>
-
-                {/* Herramientas */}
-                <div>
-                  <h4 className="text-sm text-gray-400 mb-2">Herramientas</h4>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      Git
-                    </span>
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      GitHub
-                    </span>
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      GitKraken
-                    </span>
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      VS Code
-                    </span>
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      NetBeans
-                    </span>
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      Cisco
-                    </span>
-                    <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      Linux
-                    </span>
-                  </div>
-                </div>
-
               </div>
+
+              {/* Frontend */}
+              <div>
+                <h4 className="text-sm text-gray-400 mb-2">Frontend</h4>
+                <div className="flex flex-wrap gap-2">
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
+                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    React
+                  </span>
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
+                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    Angular
+                  </span>
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
+                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    Tailwind CSS
+                  </span>
+                </div>
+              </div>
+
+              {/* Backend */}
+              <div>
+                <h4 className="text-sm text-gray-400 mb-2">Backend</h4>
+                <div className="flex flex-wrap gap-2">
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
+                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    Node.js
+                  </span>
+                </div>
+              </div>
+
+              {/* Bases de datos */}
+              <div>
+                <h4 className="text-sm text-gray-400 mb-2">Bases de datos</h4>
+                <div className="flex flex-wrap gap-2">
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
+                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    PostgreSQL
+                  </span>
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
+                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    MySQL
+                  </span>
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
+                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    MongoDB
+                  </span>
+                </div>
+              </div>
+
+              {/* Herramientas */}
+              <div>
+                <h4 className="text-sm text-gray-400 mb-2">Herramientas</h4>
+                <div className="flex flex-wrap gap-2">
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
+                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    Git
+                  </span>
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
+                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    GitHub
+                  </span>
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
+                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    GitKraken
+                  </span>
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
+                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    VS Code
+                  </span>
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
+                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    NetBeans
+                  </span>
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
+                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    Cisco
+                  </span>
+                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
+                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    Linux
+                  </span>
+                </div>
+              </div>
+
             </div>
+          </div>
 
         </div>
       </div>
