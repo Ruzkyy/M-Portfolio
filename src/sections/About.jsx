@@ -18,7 +18,7 @@ export default function About() {
   return (
     <section className="px-20 pt-16 pb-20 flex justify-center">
       
-      <div className="grid md:grid-cols-2 gap-20 max-w-[1400px] w-full">
+      <div className="grid lg:grid-cols-2 gap-20 max-w-[1400px] w-full">
 
         {/* 🧑 PERFIL */}
         <div className="flex justify-center items-start">
