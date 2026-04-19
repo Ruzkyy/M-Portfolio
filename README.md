@@ -1,4 +1,4 @@
-# Portafolio Personal | Julián Ruiz (Ruzky)
+# Portafolio Personal | Ruzky
 
 Bienvenido al repositorio de mi portafolio profesional. Como estudiante de **Ingeniería de Sistemas** y **Desarrollador Full Stack**, este proyecto es el reflejo de mi evolución técnica y mi enfoque hacia la **Arquitectura Cloud**.
 
