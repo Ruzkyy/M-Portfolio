@@ -1,29 +1,25 @@
-<<<<<<< HEAD
-🧩 Frontend
-⚛️ React → estructura de la app
-⚡ Vite → servidor rápido y build
-🎨 Tailwind CSS → estilos rápidos con clases
-🎬 Framer Motion → animaciones
-🎯 React Icons → iconos
-🧱 Base
-🟠 JavaScript
-🔵 HTML (JSX en React)
-🟣 CSS (con Tailwind)
-=======
->>>>>>> master
-# React + Vite
+Portafolio Personal - Julián Ruiz (Ruzky)
+Bienvenido al repositorio oficial de mi portafolio profesional. Como estudiante de Ingeniería de Sistemas y Desarrollador Full Stack, este proyecto sirve como vitrina para mis habilidades técnicas y mi transición hacia el ecosistema de Cloud Engineering.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Descripción del Proyecto
+Este portafolio es una aplicación web de alto rendimiento diseñada bajo un enfoque Mobile-First. El objetivo principal fue crear una interfaz sofisticada que no sacrificara la velocidad de carga ni la accesibilidad. Se implementaron patrones de diseño modernos y una arquitectura de componentes reutilizables para garantizar que el código sea mantenible y escalable.
 
-Currently, two official plugins are available:
+El proyecto destaca por su estética Glassmorphism, lograda mediante la manipulación avanzada de propiedades de CSS y el uso de utilidades de Tailwind para gestionar capas de transparencia y desenfoque sin afectar el rendimiento del renderizado.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Características Técnicas
+Interfaz de Usuario (UI): Diseño minimalista con efectos de cristal y desenfoque de fondo.
 
-## React Compiler
+Responsividad: Implementación de breakpoints estratégicos para una experiencia consistente en cualquier resolución.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Arquitectura: Estructura modular basada en componentes funcionales de React, facilitando la integración futura de nuevas secciones o micro-servicios.
 
-## Expanding the ESLint configuration
+Optimización: Uso de librerías ligeras para la gestión de iconos y recursos, minimizando el peso del bundle final.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Stack Tecnológico
+Frontend: React (JavaScript)
+
+Maquetación: HTML5
+
+Estilizado: Tailwind CSS / CSS3 (Custom Properties)
+
+Iconografía: Lucide React y React Icons
