@@ -1,25 +1,33 @@
-Portafolio Personal - Julián Ruiz (Ruzky)
-Bienvenido al repositorio oficial de mi portafolio profesional. Como estudiante de Ingeniería de Sistemas y Desarrollador Full Stack, este proyecto sirve como vitrina para mis habilidades técnicas y mi transición hacia el ecosistema de Cloud Engineering.
+# Portafolio Personal | Julián Ruiz (Ruzky)
 
-Descripción del Proyecto
-Este portafolio es una aplicación web de alto rendimiento diseñada bajo un enfoque Mobile-First. El objetivo principal fue crear una interfaz sofisticada que no sacrificara la velocidad de carga ni la accesibilidad. Se implementaron patrones de diseño modernos y una arquitectura de componentes reutilizables para garantizar que el código sea mantenible y escalable.
+Bienvenido al repositorio de mi portafolio profesional. Como estudiante de **Ingeniería de Sistemas** y **Desarrollador Full Stack**, este proyecto es el reflejo de mi evolución técnica y mi enfoque hacia la **Arquitectura Cloud**.
 
-El proyecto destaca por su estética Glassmorphism, lograda mediante la manipulación avanzada de propiedades de CSS y el uso de utilidades de Tailwind para gestionar capas de transparencia y desenfoque sin afectar el rendimiento del renderizado.
+---
 
-Características Técnicas
-Interfaz de Usuario (UI): Diseño minimalista con efectos de cristal y desenfoque de fondo.
+### Descripción del Proyecto
 
-Responsividad: Implementación de breakpoints estratégicos para una experiencia consistente en cualquier resolución.
+Este portafolio es una plataforma web de alto rendimiento construida con un enfoque **Mobile-First**. El objetivo central fue desarrollar una interfaz sofisticada que equilibre la estética visual con la eficiencia técnica. Se aplicaron patrones de diseño modernos y una arquitectura de componentes modulares para asegurar un código mantenible y escalable.
 
-Arquitectura: Estructura modular basada en componentes funcionales de React, facilitando la integración futura de nuevas secciones o micro-servicios.
+El proyecto destaca por su implementación de **Glassmorphism**, utilizando manipulación avanzada de propiedades CSS y utilidades de Tailwind para gestionar transparencias y desenfoque (backdrop-filter) sin comprometer el rendimiento del renderizado en el navegador.
 
-Optimización: Uso de librerías ligeras para la gestión de iconos y recursos, minimizando el peso del bundle final.
+---
 
-Stack Tecnológico
-Frontend: React (JavaScript)
+### Características Principales
 
-Maquetación: HTML5
+* **Experiencia de Usuario (UX/UI):** Interfaz minimalista con efectos de profundidad y diseño limpio.
+* **Responsividad Total:** Adaptabilidad garantizada en dispositivos móviles, tablets y monitores de alta resolución mediante breakpoints estratégicos.
+* **Arquitectura Escalable:** Estructura basada en componentes funcionales de React, preparada para la integración de micro-servicios.
+* **Rendimiento Optimizado:** Uso eficiente de dependencias y librerías de iconografía ligera para reducir el tiempo de carga.
 
-Estilizado: Tailwind CSS / CSS3 (Custom Properties)
+---
 
-Iconografía: Lucide React y React Icons
+### Stack Tecnológico
+
+| Categoría | Tecnologías |
+| :--- | :--- |
+| **Frontend** | React, JavaScript (ES6+) |
+| **Estilos** | Tailwind CSS, CSS3, HTML5 |
+| **Iconografía** | Lucide React, React Icons |
+| **Despliegue** | Vercel / Netlify |
+
+---
