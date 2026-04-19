@@ -14,6 +14,96 @@ import {
 
 import { BsCalendar } from "react-icons/bs"
 
+// --- DATOS ---
+
+/**
+ * Diccionario de tecnologías agrupadas por categoría.
+ * Facilita el renderizado dinámico de las pastillas (badges) en la vista.
+ * @type {Object.<string, string[]>}
+ */
+const technologies = {
+  "Lenguajes": ["HTML", "CSS", "JavaScript", "Java"],
+  "Frontend": ["React", "Angular", "Tailwind CSS"],
+  "Backend": ["Node.js"],
+  "Bases de datos": ["PostgreSQL", "MySQL", "MongoDB"],
+  "Herramientas": ["Git", "GitHub", "GitKraken", "VS Code", "NetBeans", "Cisco", "Linux"]
+};
+
+/**
+ * Lista de certificaciones obtenidas o en curso.
+ * @type {Array<{logo: string, title: string, date: string}>}
+ */
+const certifications = [
+  { logo: googleLogo, title: "Google Cloud Computing Foundations", date: "2026 - en curso" },
+  { logo: linuxLogo, title: "Linux Essentials", date: "2026 - en curso" },
+  { logo: ccnaLogo, title: "CCNA: Introducción a las redes", date: "2025" }
+];
+
+// --- COMPONENTES REUTILIZABLES ---
+
+/**
+ * Renderiza una etiqueta descriptiva debajo de la foto de perfil.
+ * @param {Object} props
+ * @param {Function} props.icon - Componente del ícono de react-icons
+ * @param {string} props.text - Texto a mostrar en la etiqueta
+ */
+const ProfileTag = ({ icon: Icon, text }) => (
+  <span className="flex items-center gap-1 bg-white/10 px-3 py-1 rounded-full hover:bg-white/20 hover:scale-105 transition-all duration-300">
+    <Icon size={12} /> {text}
+  </span>
+);
+
+/**
+ * Renderiza una fila de información (Educación o Certificaciones).
+ * Incluye un logo (opcional), título y un tooltip flotante con más información.
+ * @param {Object} props
+ * @param {string} [props.logo] - Ruta de la imagen del logo (opcional)
+ * @param {string} props.title - Título principal a mostrar
+ * @param {string} props.tooltipText - Texto que aparece al hacer hover en el ícono de ayuda
+ */
+const InfoRow = ({ logo, title, tooltipText, defaultText }) => (
+  <div className="flex items-center justify-between">
+    <div className="flex items-center gap-2">
+      {logo && <img src={logo} className="w-6 h-6" alt={title} />}
+      <p>{title}</p>
+    </div>
+
+    <div className="relative group flex items-center justify-center w-5 h-5">
+      <FaQuestionCircle className="text-gray-400 hover:text-white transition-all duration-300" />
+      <span className="
+        absolute bottom-full mb-2
+        left-1/2 -translate-x-1/2
+        opacity-0 translate-y-2
+        group-hover:opacity-100 group-hover:translate-y-0
+        transition-all duration-300
+        bg-black/90 text-white text-xs px-5 py-2
+        rounded-xl shadow-lg whitespace-nowrap
+        pointer-events-none z-10
+      ">
+        {tooltipText}
+      </span>
+    </div>
+  </div>
+);
+
+/**
+ * Renderiza una "pastilla" estilizada para una tecnología individual.
+ * @param {Object} props
+ * @param {string} props.name - Nombre de la tecnología (ej. "React")
+ */
+const TechBadge = ({ name }) => (
+  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
+    hover:bg-white/20 hover:scale-105 transition-all duration-300 
+    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+    {name}
+  </span>
+);
+
+/**
+ * Componente principal "Sobre mí" (About).
+ * Contiene el perfil personal, descripción, educación, certificaciones y tecnologías.
+ * Está estructurado en dos columnas principales (Perfil fijo a la izquierda en escritorio).
+ */
 export default function About() {
   return (
     <section className="px-20 pt-16 pb-20 flex justify-center">
@@ -36,19 +126,16 @@ export default function About() {
                 Julián Ruiz
               </h2>
 
-              <p className="text-gray-400 text-lg leading-relaxed mb-4 text-lg">
+              <p className="text-gray-400 text-lg leading-relaxed mb-4">
                 Desarrollador Full Stack
               </p>
 
               {/* TAGS */}
               <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-300">
-
-                <span className="flex items-center gap-1 bg-white/10 px-3 py-1 rounded-full hover:bg-white/20 hover:scale-105 transition-all duration-300">
-                  <FaUserTie size={12} /> Ingeniero de Sistemas
-                </span>
-
-                {/* EDAD */}
-                <span className="relative group flex items-center gap-1 bg-white/10 px-3 py-1 rounded-full transition-all duration-300hover:bg-white/20 hover:scale-105 hover:shadow-[0_0_12px_rgba(255,255,255,0.25)]">
+                <ProfileTag icon={FaUserTie} text="Ingeniero de Sistemas" />
+                
+                {/* Etiqueta de Edad (Con Tooltip especial) */}
+                <span className="relative group flex items-center gap-1 bg-white/10 px-3 py-1 rounded-full transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-[0_0_12px_rgba(255,255,255,0.25)]">
                   <BsCalendar size={12} /> 20 años
                   <span className="
                       absolute bottom-full mb-2
@@ -60,25 +147,15 @@ export default function About() {
                       text-white text-xs px-5 py-2
                       rounded-xl shadow-lg
                       whitespace-nowrap
-                      pointer-events-none
+                      pointer-events-none z-10
                     ">
                     actualizado el 27/05/2026
                   </span>
-
                 </span>
 
-                <span className="flex items-center gap-1 bg-white/10 px-3 py-1 rounded-full hover:bg-white/20 hover:scale-105 transition-all duration-300">
-                  <FaBriefcase size={12} /> Buscando empleo
-                </span>
-
-                <span className="flex items-center gap-1 bg-white/10 px-3 py-1 rounded-full hover:bg-white/20 hover:scale-105 transition-all duration-300">
-                  <FaCloud size={12} /> Cloud Engineer
-                </span>
-
-                <span className="flex items-center gap-1 bg-white/10 px-3 py-1 rounded-full hover:bg-white/20 hover:scale-105 transition-all duration-300">
-                  <FaMapMarkerAlt size={12} /> Bogotá, Colombia
-                </span>
-
+                <ProfileTag icon={FaBriefcase} text="Buscando empleo" />
+                <ProfileTag icon={FaCloud} text="Cloud Engineer" />
+                <ProfileTag icon={FaMapMarkerAlt} text="Bogotá, Colombia" />
               </div>
             </div>
           </div>
@@ -90,7 +167,6 @@ export default function About() {
           {/* SOBRE MI */}
           <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
             <h3 className="text-xl font-semibold mb-4">Sobre mí</h3>
-
             <p className="text-gray-400 leading-relaxed">
               Soy estudiante de séptimo semestre de Ingeniería de Sistemas en la Universidad Konrad Lorenz, en jornada nocturna, con conocimientos en programación, desarrollo de software y bases de datos. Tengo experiencia en Java, desarrollo web en HTML y creación de interfaces gráficas, además de haber trabajado en proyectos bajo el modelo MVC. Manejo herramientas como Visual Studio Code, NetBeans, Eclipse, IntelliJ IDEA y GitHub. Actualmente, estoy profundizando en infraestructura a través de un curso de Google Skills, con un enfoque especial en el área de computación en la nube. Me interesa desarrollarme profesionalmente como Cloud Engineer y adquirir experiencia como desarrollador o auxiliar de redes.
             </p>
@@ -99,278 +175,55 @@ export default function About() {
           {/* EDUCACIÓN */}
           <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
             <h3 className="text-xl font-semibold mb-4">Educación</h3>
-
             <div className="space-y-4 text-gray-400">
-
-              {/* Bachiller */}
-              <div className="flex items-center justify-between">
-                <p>Título de bachiller</p>
-
-                <div className="relative group flex items-center justify-center w-5 h-5">
-                  <FaQuestionCircle className="text-gray-400 hover:text-white transition-all duration-300" />
-
-                  <span className="
-                    absolute bottom-full mb-2
-                    left-1/2 -translate-x-1/2
-                    opacity-0 translate-y-2
-                    group-hover:opacity-100 group-hover:translate-y-0
-                    transition-all duration-300
-                    bg-black/90 text-white text-xs px-5 py-2
-                    rounded-xl shadow-lg whitespace-nowrap
-                    pointer-events-none
-                  ">
-                    Graduado en 2022
-                  </span>
-                </div>
-              </div>
-
-              {/* Universidad */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <img src={logoU} className="w-6 h-6" />
-                  <p>Ingeniería de Sistemas (FUKL)</p>
-                </div>
-
-                <div className="relative group flex items-center justify-center w-5 h-5">
-                  <FaQuestionCircle className="text-gray-400 hover:text-white transition-all duration-300" />
-
-                  <span className="
-                    absolute bottom-full mb-2
-                    left-1/2 -translate-x-1/2
-                    opacity-0 translate-y-2
-                    group-hover:opacity-100 group-hover:translate-y-0
-                    transition-all duration-300
-                    bg-black/90 text-white text-xs px-5 py-2
-                    rounded-xl shadow-lg whitespace-nowrap
-                    pointer-events-none
-                  ">
-                    2023 - en curso
-                  </span>
-                </div>
-              </div>
-
+              <InfoRow 
+                title="Título de bachiller" 
+                tooltipText="Graduado en 2022" 
+              />
+              <InfoRow 
+                logo={logoU} 
+                title="Ingeniería de Sistemas (FUKL)" 
+                tooltipText="2023 - en curso" 
+              />
             </div>
           </div>
 
           {/* CERTIFICACIONES */}
           <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
             <h3 className="text-xl font-semibold mb-4">Certificaciones</h3>
-
             <div className="space-y-6 text-gray-400">
-
-              {/* Google */}
-              <div className="flex justify-between items-center">
-                <div className="flex items-center gap-3">
-                  <img src={googleLogo} className="w-6 h-6" />
-                  <p>Google Cloud Computing Foundations</p>
-                </div>
-
-                <div className="relative group flex items-center justify-center w-5 h-5">
-                  <FaQuestionCircle className="text-gray-400 hover:text-white transition-all duration-300" />
-
-                  <span className="
-                    absolute bottom-full mb-2
-                    left-1/2 -translate-x-1/2
-                    opacity-0 translate-y-2
-                    group-hover:opacity-100 group-hover:translate-y-0
-                    transition-all duration-300
-                    bg-black/90 text-white text-xs px-5 py-2
-                    rounded-xl shadow-lg whitespace-nowrap
-                    pointer-events-none
-                  ">
-                    2026 - en curso
-                  </span>
-                </div>
-              </div>
-
-              {/* Linux */}
-              <div className="flex justify-between items-center">
-                <div className="flex items-center gap-3">
-                  <img src={linuxLogo} className="w-6 h-6" />
-                  <p>Linux Essentials</p>
-                </div>
-
-                <div className="relative group flex items-center justify-center w-5 h-5">
-                  <FaQuestionCircle className="text-gray-400 hover:text-white transition-all duration-300" />
-
-                  <span className="
-                    absolute bottom-full mb-2
-                    left-1/2 -translate-x-1/2
-                    opacity-0 translate-y-2
-                    group-hover:opacity-100 group-hover:translate-y-0
-                    transition-all duration-300
-                    bg-black/90 text-white text-xs px-5 py-2
-                    rounded-xl shadow-lg whitespace-nowrap
-                    pointer-events-none
-                  ">
-                    2026 - en curso
-                  </span>
-                </div>
-              </div>
-
-              {/* CCNA */}
-              <div className="flex justify-between items-center">
-                <div className="flex items-center gap-3">
-                  <img src={ccnaLogo} className="w-6 h-6" />
-                  <p>CCNA: Introducción a las redes</p>
-                </div>
-
-                <div className="relative group flex items-center justify-center w-5 h-5">
-                  <FaQuestionCircle className="text-gray-400 hover:text-white transition-all duration-300" />
-
-                  <span className="
-                    absolute bottom-full mb-2
-                    left-1/2 -translate-x-1/2
-                    opacity-0 translate-y-2
-                    group-hover:opacity-100 group-hover:translate-y-0
-                    transition-all duration-300
-                    bg-black/90 text-white text-xs px-5 py-2
-                    rounded-xl shadow-lg whitespace-nowrap
-                    pointer-events-none
-                  ">
-                    2025
-                  </span>
-                </div>
-              </div>
-
+              {certifications.map((cert, index) => (
+                <InfoRow 
+                  key={index}
+                  logo={cert.logo}
+                  title={cert.title}
+                  tooltipText={cert.date}
+                />
+              ))}
             </div>
           </div>
+
           {/* TECNOLOGÍAS */}
           <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
             <h3 className="text-xl font-semibold mb-6">Tecnologías</h3>
-
+            
             <div className="flex flex-col gap-6">
-
-              {/* Lenguajes */}
-              <div>
-                <h4 className="text-sm text-gray-400 mb-2">Lenguajes</h4>
-                <div className="flex flex-wrap gap-2">
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    HTML
-                  </span>
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    CSS
-                  </span>
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    JavaScript
-                  </span>
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    Java
-                  </span>
+              {Object.entries(technologies).map(([category, items]) => (
+                <div key={category}>
+                  <h4 className="text-sm text-gray-400 mb-2">{category}</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {items.map(tech => (
+                      <TechBadge key={tech} name={tech} />
+                    ))}
+                  </div>
                 </div>
-              </div>
-
-              {/* Frontend */}
-              <div>
-                <h4 className="text-sm text-gray-400 mb-2">Frontend</h4>
-                <div className="flex flex-wrap gap-2">
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    React
-                  </span>
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    Angular
-                  </span>
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    Tailwind CSS
-                  </span>
-                </div>
-              </div>
-
-              {/* Backend */}
-              <div>
-                <h4 className="text-sm text-gray-400 mb-2">Backend</h4>
-                <div className="flex flex-wrap gap-2">
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    Node.js
-                  </span>
-                </div>
-              </div>
-
-              {/* Bases de datos */}
-              <div>
-                <h4 className="text-sm text-gray-400 mb-2">Bases de datos</h4>
-                <div className="flex flex-wrap gap-2">
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    PostgreSQL
-                  </span>
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    MySQL
-                  </span>
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    MongoDB
-                  </span>
-                </div>
-              </div>
-
-              {/* Herramientas */}
-              <div>
-                <h4 className="text-sm text-gray-400 mb-2">Herramientas</h4>
-                <div className="flex flex-wrap gap-2">
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    Git
-                  </span>
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    GitHub
-                  </span>
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    GitKraken
-                  </span>
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    VS Code
-                  </span>
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    NetBeans
-                  </span>
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    Cisco
-                  </span>
-                  <span className="bg-white/10 px-3 py-1 rounded-md text-xs text-gray-300 
-                    hover:bg-white/20 hover:scale-105 transition-all duration-300 
-                    hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                    Linux
-                  </span>
-                </div>
-              </div>
-
+              ))}
             </div>
+
           </div>
 
         </div>
       </div>
     </section>
   )
-}
+}
