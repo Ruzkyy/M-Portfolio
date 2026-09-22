@@ -2,7 +2,8 @@ import foto from "../assets/fotos_perfil.png"
 import logoU from "../assets/logo-konrad.png"
 import googleLogo from "../assets/google-cloud.png"
 import linuxLogo from "../assets/linux.png"
-import ccnaLogo from "../assets/cisco.png"
+import ccnaBadge from "../assets/ccna-badge.png"
+import ccnaLogo from "../assets/ccna-switching-badge.png"
 
 import {
   FaUserTie,
@@ -13,6 +14,7 @@ import {
 } from "react-icons/fa"
 
 import { BsCalendar } from "react-icons/bs"
+import { useEffect, useState } from "react"
 
 // --- DATOS ---
 
@@ -26,7 +28,7 @@ const technologies = {
   "Frontend": ["React", "Angular", "Tailwind CSS"],
   "Backend": ["Node.js"],
   "Bases de datos": ["PostgreSQL", "MySQL", "MongoDB"],
-  "Herramientas": ["Git", "GitHub", "GitKraken", "VS Code", "NetBeans", "Cisco", "Linux"]
+  "Herramientas": ["Git", "GitHub", "GitKraken", "VS Code", "NetBeans", "Linux"]
 };
 
 /**
@@ -105,16 +107,33 @@ const TechBadge = ({ name }) => (
  * Está estructurado en dos columnas principales (Perfil fijo a la izquierda en escritorio).
  */
 export default function About() {
+  const [selectedBadge, setSelectedBadge] = useState(null)
+
+  useEffect(() => {
+    const closeOnEscape = event => {
+      if (event.key === "Escape") setSelectedBadge(null)
+    }
+    window.addEventListener("keydown", closeOnEscape)
+    return () => window.removeEventListener("keydown", closeOnEscape)
+  }, [])
+
+  const badges = [
+    { image: ccnaBadge, title: "Medalla CCNA verificada" },
+    { image: ccnaLogo, title: "Medalla Cisco Networking Academy" },
+  ]
+
   return (
-    <section className="px-20 pt-16 pb-20 flex justify-center">
+    <>
+    <section className="px-6 lg:px-20 pt-16 pb-20 flex justify-center">
 
       <div className="grid lg:grid-cols-2 gap-20 max-w-[1400px] w-full">
 
         {/* 🧑 PERFIL */}
         <div className="flex justify-center items-start">
-          <div className="relative lg:fixed lg:top-1/2 lg:-translate-y-1/2 self-start bg-white/5 border border-white/10 rounded-2xl p-8 lg:p-20 backdrop-blur-md w-full max-w-xl">
+          <div className="profile-card relative lg:fixed lg:top-1/2 lg:-translate-y-1/2 self-start bg-white/5 border border-white/10 rounded-2xl p-6 lg:p-8 backdrop-blur-md w-full max-w-xl">
 
-            <div className="flex flex-col items-center text-center">
+            <div className="profile-card-layout">
+              <div className="flex min-w-0 flex-col items-center text-center">
 
               <img
                 src={foto}
@@ -157,7 +176,17 @@ export default function About() {
                 <ProfileTag icon={FaCloud} text="Cloud Engineer" />
                 <ProfileTag icon={FaMapMarkerAlt} text="Bogotá, Colombia" />
               </div>
+              </div>
+
             </div>
+
+            <aside className="profile-badge-rail" aria-label="Medallas de formación">
+                {badges.map(badge => (
+                  <button key={badge.title} onClick={() => setSelectedBadge(badge)} aria-label={`Ampliar ${badge.title}`}>
+                    <img src={badge.image} alt={badge.title} />
+                  </button>
+                ))}
+            </aside>
           </div>
         </div>
 
@@ -165,7 +194,7 @@ export default function About() {
         <div className="flex flex-col gap-12">
 
           {/* SOBRE MI */}
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div className="purpose-card bg-white/5 border border-white/10 rounded-2xl p-8">
             <h3 className="text-xl font-semibold mb-4">Sobre mí</h3>
             <p className="text-gray-400 leading-relaxed">
               Soy estudiante de séptimo semestre de Ingeniería de Sistemas en la Universidad Konrad Lorenz, en jornada nocturna, con conocimientos en programación, desarrollo de software y bases de datos. Tengo experiencia en Java, desarrollo web en HTML y creación de interfaces gráficas, además de haber trabajado en proyectos bajo el modelo MVC. Manejo herramientas como Visual Studio Code, NetBeans, Eclipse, IntelliJ IDEA y GitHub. Actualmente, estoy profundizando en infraestructura a través de un curso de Google Skills, con un enfoque especial en el área de computación en la nube. Me interesa desarrollarme profesionalmente como Cloud Engineer y adquirir experiencia como desarrollador o auxiliar de redes.
@@ -225,5 +254,15 @@ export default function About() {
         </div>
       </div>
     </section>
+    {selectedBadge && (
+      <div className="badge-image-modal" role="presentation" onClick={() => setSelectedBadge(null)}>
+        <div className="badge-image-modal-content" role="dialog" aria-modal="true" aria-label={selectedBadge.title} onClick={event => event.stopPropagation()}>
+          <button className="badge-image-close" onClick={() => setSelectedBadge(null)} aria-label="Cerrar medalla ampliada">Cerrar</button>
+          <img src={selectedBadge.image} alt={selectedBadge.title} />
+          <p>{selectedBadge.title}</p>
+        </div>
+      </div>
+    )}
+    </>
   )
-}
+}

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Home, User, Mail } from "lucide-react"
+import { Home, User, Mail, Code2, FolderKanban, Award } from "lucide-react"
 
 /**
  * Componente Navbar: Barra de navegación principal.
@@ -19,6 +19,9 @@ export default function Navbar({ setSection }) {
   const items = [
     { id: "home", icon: <Home size={20} />, label: "Inicio" },
     { id: "about", icon: <User size={20} />, label: "Sobre mí" },
+    { id: "technologies", icon: <Code2 size={20} />, label: "Tecnologías" },
+    { id: "projects", icon: <FolderKanban size={20} />, label: "Proyectos" },
+    { id: "certificates", icon: <Award size={20} />, label: "Certificados" },
     { id: "contact", icon: <Mail size={20} />, label: "Contacto" },
   ]
 
@@ -27,24 +30,18 @@ export default function Navbar({ setSection }) {
     <div className="fixed bottom-6 w-full flex justify-center z-50">
 
       {/* Fondo cristalizado (Glassmorphism) con padding y esquinas redondeadas */}
-      <div className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full flex gap-6">
+      <div className="max-w-[calc(100vw-1rem)] overflow-x-auto bg-white/10 backdrop-blur-md px-4 sm:px-6 py-3 rounded-full flex gap-5 sm:gap-6">
 
         {items.map((item, index) => (
           <div
             key={item.id} // Se usa un ID único en lugar del índice para evitar problemas de renderizado
             className="relative flex flex-col items-center"
             // Se actualiza el estado al pasar o quitar el mouse
-            onMouseEnter={() => setHover(index)}
+            onMouseEnter={event => setHover({ index, rect: event.currentTarget.getBoundingClientRect() })}
             onMouseLeave={() => setHover(null)}
           >
 
             {/* Tooltip flotante: Solo aparece si el mouse está sobre este botón */}
-            {hover === index && (
-              <span className="absolute -top-8 text-xs bg-white text-black px-2 py-1 rounded">
-                {item.label}
-              </span>
-            )}
-
             {/* Botón interactivo de navegación */}
             <button
               onClick={() => setSection(item.id)}
@@ -58,6 +55,14 @@ export default function Navbar({ setSection }) {
         ))}
 
       </div>
+      {hover && (
+        <span
+          className="navbar-tooltip"
+          style={{ top: hover.rect.top - 10, left: hover.rect.left + hover.rect.width / 2 }}
+        >
+          {items[hover.index].label}
+        </span>
+      )}
     </div>
   )
 }

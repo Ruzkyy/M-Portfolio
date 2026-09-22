@@ -1,4 +1,5 @@
 // --- DATOS ---
+import { GoalPanel } from "./Goals"
 
 /**
  * Información principal mostrada en la sección "Hero" (Inicio).
@@ -27,12 +28,16 @@ const heroData = {
  */
 export default function Hero({ setSection }) {
   return (
-    <section className="h-screen flex items-center justify-center text-center px-6 relative overflow-hidden">
+    <section className="home-section min-h-screen flex flex-col items-center justify-center text-center px-6 py-24 relative overflow-hidden">
 
       {/* Fondo animado */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-black via-gray-900 to-black animate-gradient"></div>
 
-      <div className="backdrop-blur-md bg-white/5 px-8 py-6 rounded-2xl">
+      <div className="home-goals">
+        <GoalPanel minimal />
+      </div>
+
+      <div className="home-content backdrop-blur-md bg-white/5 px-8 py-6 rounded-2xl">
 
         <p className="text-xl text-gray-300">
           {heroData.greeting} <span className="text-white">{heroData.name}</span> {heroData.greetingEmoji}
@@ -54,6 +59,7 @@ export default function Hero({ setSection }) {
         </button>
 
       </div>
+
     </section>
   )
 }

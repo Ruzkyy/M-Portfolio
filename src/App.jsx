@@ -3,6 +3,10 @@ import Navbar from "./components/Navbar"
 import Hero from "./sections/Hero"
 import About from "./sections/About"
 import Contact from "./sections/Contact"
+import Projects from "./sections/Projects"
+import Technologies from "./sections/Technologies"
+import Certificates from "./sections/Certificates"
+import QrWidget from "./components/QrWidget"
 import Kirby from "./components/Kirby"
 
 function App() {
@@ -14,7 +18,11 @@ function App() {
 
       {section === "home" && <Hero setSection={setSection} />}
       {section === "about" && <About />}
+      {section === "technologies" && <Technologies />}
+      {section === "projects" && <Projects />}
+      {section === "certificates" && <Certificates />}
       {section === "contact" && <Contact />}
+      <QrWidget />
       <Kirby section={section} />
     </>
   )
