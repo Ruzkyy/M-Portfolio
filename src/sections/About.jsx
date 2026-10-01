@@ -155,7 +155,7 @@ export default function About() {
                 
                 {/* Etiqueta de Edad (Con Tooltip especial) */}
                 <span className="relative group flex items-center gap-1 bg-white/10 px-3 py-1 rounded-full transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-[0_0_12px_rgba(255,255,255,0.25)]">
-                  <BsCalendar size={12} /> 20 años
+                  <BsCalendar size={12} /> 21 años
                   <span className="
                       absolute bottom-full mb-2
                       left-1/2 -translate-x-1/2
@@ -197,7 +197,7 @@ export default function About() {
           <div className="purpose-card bg-white/5 border border-white/10 rounded-2xl p-8">
             <h3 className="text-xl font-semibold mb-4">Sobre mí</h3>
             <p className="text-gray-400 leading-relaxed">
-              Soy estudiante de séptimo semestre de Ingeniería de Sistemas en la Universidad Konrad Lorenz, en jornada nocturna, con conocimientos en programación, desarrollo de software y bases de datos. Tengo experiencia en Java, desarrollo web en HTML y creación de interfaces gráficas, además de haber trabajado en proyectos bajo el modelo MVC. Manejo herramientas como Visual Studio Code, NetBeans, Eclipse, IntelliJ IDEA y GitHub. Actualmente, estoy profundizando en infraestructura a través de un curso de Google Skills, con un enfoque especial en el área de computación en la nube. Me interesa desarrollarme profesionalmente como Cloud Engineer y adquirir experiencia como desarrollador o auxiliar de redes.
+              Soy estudiante de octavo semestre de Ingeniería de Sistemas en la Universidad Konrad Lorenz, en jornada nocturna, con conocimientos en programación, desarrollo de software y bases de datos. Tengo experiencia en Java, desarrollo web en HTML y creación de interfaces gráficas, además de haber trabajado en proyectos bajo el modelo MVC. Manejo herramientas como Visual Studio Code, NetBeans, Eclipse, IntelliJ IDEA y GitHub. Actualmente, estoy profundizando en infraestructura a través de un curso de Google Skills, con un enfoque especial en el área de computación en la nube. Me interesa desarrollarme profesionalmente como Cloud Engineer y adquirir experiencia como desarrollador o auxiliar de redes.
             </p>
           </div>
 
