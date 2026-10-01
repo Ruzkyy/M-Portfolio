@@ -1,6 +1,19 @@
 import { ArrowUpRight } from "lucide-react"
+import { motion } from "framer-motion"
 import { FaGithub } from "react-icons/fa"
 import switchPreviewFallback from "../assets/switch-support-preview.png"
+
+const Motion = motion
+
+const projectListVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.14 } },
+}
+
+const projectCardVariants = {
+  hidden: { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+}
 
 const projects = [
   {
@@ -38,9 +51,16 @@ export default function Projects() {
         <p className="mt-5 max-w-2xl text-gray-400 leading-relaxed">
           Experimentos y soluciones que combinan desarrollo web, diseño de software e inteligencia artificial.
         </p>
-        <div className="project-grid mt-12">
+        <Motion.div
+          className="project-grid mt-12"
+          variants={projectListVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           {projects.map(project => (
-            <article className={`project-card ${project.accent}`} key={project.title}>
+            <Motion.div key={project.title} variants={projectCardVariants}>
+            <article className={`project-card ${project.accent}`}>
               <a
                 className="project-preview"
                 href={project.url}
@@ -76,8 +96,9 @@ export default function Projects() {
                 </div>
               </div>
             </article>
+            </Motion.div>
           ))}
-        </div>
+        </Motion.div>
       </div>
     </section>
   )

@@ -1,5 +1,8 @@
 import { useState } from "react"
+import { motion } from "framer-motion"
 import { Home, User, Mail, Code2, FolderKanban, Award } from "lucide-react"
+
+const Motion = motion
 
 /**
  * Componente Navbar: Barra de navegación principal.
@@ -11,7 +14,7 @@ import { Home, User, Mail, Code2, FolderKanban, Award } from "lucide-react"
  * @param {Object} props
  * @param {Function} props.setSection - Función para cambiar la sección activa de la página.
  */
-export default function Navbar({ setSection }) {
+export default function Navbar({ setSection, activeSection }) {
   // Estado para controlar sobre qué botón está el cursor (para mostrar el Tooltip)
   const [hover, setHover] = useState(null)
 
@@ -35,7 +38,7 @@ export default function Navbar({ setSection }) {
         {items.map((item, index) => (
           <div
             key={item.id} // Se usa un ID único en lugar del índice para evitar problemas de renderizado
-            className="relative flex flex-col items-center"
+            className="relative z-0 flex flex-col items-center"
             // Se actualiza el estado al pasar o quitar el mouse
             onMouseEnter={event => setHover({ index, rect: event.currentTarget.getBoundingClientRect() })}
             onMouseLeave={() => setHover(null)}
@@ -45,11 +48,18 @@ export default function Navbar({ setSection }) {
             {/* Botón interactivo de navegación */}
             <button
               onClick={() => setSection(item.id)}
-              className="text-white hover:scale-125 transition"
+              className="relative z-10 text-white hover:scale-125 transition"
               aria-label={item.label}
             >
               {item.icon}
             </button>
+            {activeSection === item.id && (
+              <Motion.span
+                className="navbar-active-indicator"
+                layoutId="navbar-active-indicator"
+                transition={{ type: "spring", stiffness: 500, damping: 35 }}
+              />
+            )}
 
           </div>
         ))}

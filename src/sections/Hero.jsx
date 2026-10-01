@@ -1,5 +1,18 @@
 // --- DATOS ---
+import { motion } from "framer-motion"
 import { GoalPanel } from "./Goals"
+
+const Motion = motion
+
+const introContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.08 } },
+}
+
+const introItem = {
+  hidden: { opacity: 0, y: 14 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+}
 
 /**
  * Información principal mostrada en la sección "Hero" (Inicio).
@@ -37,28 +50,36 @@ export default function Hero({ setSection }) {
         <GoalPanel minimal />
       </div>
 
-      <div className="home-content backdrop-blur-md bg-white/5 px-8 py-6 rounded-2xl">
+      <Motion.div
+        className="home-content backdrop-blur-md bg-white/5 px-8 py-6 rounded-2xl"
+        variants={introContainer}
+        initial="hidden"
+        animate="visible"
+      >
 
-        <p className="text-xl text-gray-300">
+        <Motion.p className="text-xl text-gray-300" variants={introItem}>
           {heroData.greeting} <span className="text-white">{heroData.name}</span> {heroData.greetingEmoji}
-        </p>
+        </Motion.p>
 
-        <p className="mt-2 text-xl text-gray-400">
+        <Motion.p className="mt-2 text-xl text-gray-400" variants={introItem}>
           {heroData.role}
-        </p>
+        </Motion.p>
 
-        <p className="mt-2 text-lg text-gray-500">
+        <Motion.p className="mt-2 text-lg text-gray-500" variants={introItem}>
           {heroData.goal}
-        </p>
+        </Motion.p>
 
-        <button
+        <Motion.button
           onClick={() => setSection(heroData.buttonTarget)}
           className="mt-6 text-sm text-gray-300 hover:text-white transition"
+          variants={introItem}
+          whileHover={{ y: -2 }}
+          whileTap={{ scale: 0.97 }}
         >
           {heroData.buttonText}
-        </button>
+        </Motion.button>
 
-      </div>
+      </Motion.div>
 
     </section>
   )
